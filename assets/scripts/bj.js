@@ -84,45 +84,45 @@ const deck = new Deck(allCards, cardSuits)
 deck.shuffleDeck()
 const playerNick = new Player('Nick', [deck.deckDraw(deck)])
 const playerKostas = new Player('Kostas', [deck.deckDraw(deck)])
-const demoPlayer = new Player('demo' , [{ name: 'A', suit: '♥️' }, { name: '2', suit: '♥️' } ,{ name: 'K', suit: '♠️' }])
+const demoPlayer = new Player('demo', [{ name: 'A', suit: '♥️' }, { name: '2', suit: '♥️' }, { name: 'K', suit: '♠️' }])
 console.log(demoPlayer.hand)
 
 
 
 function checkAceCount(player) {
     let aceCount = 0
-    for(i = 0; i < player.hand.length; i++){
-        if(player.hand[0].name && player.hand[1].name === 'A'){
+    for (i = 0; i < player.hand.length; i++) {
+        if (player.hand[0].name && player.hand[1].name === 'A') {
             aceCount += 21
             break
         }
-        if(player.hand[i].name === 'A'){
+        if (player.hand[i].name === 'A') {
             aceCount += 1
         }
 
-    }return aceCount
+    } return aceCount
 }
 
-function getHandValue(player){
+function getHandValue(player) {
     let cardSum = 0
-    if (checkAceCount(player) === 21){
+    if (checkAceCount(player) === 21) {
         cardSum += 21
         return cardSum
-    }else if (checkAceCount(player) === 2){
+    } else if (checkAceCount(player) === 2) {
         cardSum += 12
-    }else if (checkAceCount(player) === 3){
+    } else if (checkAceCount(player) === 3) {
         cardSum += 12
-    }else if (checkAceCount(player) === 1){
+    } else if (checkAceCount(player) === 1) {
         cardSum += 11
     }
-    
-    for(i = 0; i < player.hand.length; i++){
+
+    for (i = 0; i < player.hand.length; i++) {
         let cardValue = player.hand[i].name
         if (cardValue === 'J' || cardValue === 'Q' || cardValue === 'K') {
             cardSum += 10;
-        }else if (cardValue === 'A') {
+        } else if (cardValue === 'A') {
             cardSum += 0
-        }else {
+        } else {
             cardSum += Number(cardValue)
         }
     }
@@ -130,9 +130,9 @@ function getHandValue(player){
 }
 
 function checkIfBust(player) {
-    if (getHandValue(player) <= 21){
+    if (getHandValue(player) <= 21) {
         return false
-    }else return true
+    } else return true
 }
 console.log(checkIfBust(demoPlayer));
 console.log(getHandValue(demoPlayer));

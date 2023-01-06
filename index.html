@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlackJack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles/bj.css" />
+  </head>
+  <body>
+    <section class="dealer-section">
+      <div class="dealer">
+        <h2>Dealer<span id="dealer-sum"></span></h2>
+        <div id="dealer-cards" class="dealer-cards">
+          <img
+            id="hidden"
+            class="hidden"
+            src="assets/images/Back Covers/Pomegranate.png"
+          />
+          <img
+            id="hidden"
+            class="hidden"
+            src="assets/images/Back Covers/Pomegranate.png"
+          />
+        </div>
+      </div>
+    </section>
+    <h2>Players</h2>
+    <section class="players-section">
+      <div class="player">
+        <h3>Player 1</h3>
+        <div id="player-cards" class="player-cards">
+          <img src="assets/images/Clubs/A.png" />
+          <div class="buttons">
+            <button id="hit" class="hit">Hit</button>
+            <button id="stay" class="stay">Stay</button>
+            <p id="results" class="results"></p>
+          </div>
+        </div>
+      </div>
+      <div class="player">
+        <!--<h3>Player 2</h3>
+        <div id="player-cards" class="player-cards">
+          <img src="assets/images/Clubs/A.png" />
+          <div class="buttons">
+            <button id="hit" class="hit">Hit</button>
+            <button id="stay" class="stay">Stay</button>
+            <p id="results" class="results"></p>
+          </div>
+        </div>
+      </div>-->
+    </section>
     <script src="assets/scripts/bj.js"></script>
-</body>
+  </body>
 </html>
