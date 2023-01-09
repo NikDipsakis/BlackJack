@@ -3,8 +3,9 @@
   --greenColor: rgb(1, 114, 90);
   --mintColor: rgb(161, 236, 184);
   --whiteColor: rgb(255, 255, 255);
-  --darkGreenColor: rgb(1, 77, 54);
+  --darkGreenColor: rgb(0, 70, 49);
   --lightGreenColor: rgb(30, 209, 164);
+  --darkerGreenColor:rgb(19, 73, 64);
 }
 
 * {
@@ -17,6 +18,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .dealer-section {
   display: flex;
   justify-content: center;
@@ -36,6 +38,7 @@ body {
   height: 175px;
   width: 125px;
   margin: 1px;
+  border-radius: 6px;
 }
 h2 {
   font-size: 2rem;
@@ -89,7 +92,7 @@ button {
   outline: none;
   background: none;
   font-size: 1.5rem;
-  font-weight: 550;
+  font-weight: 575;
   background-color: var(--mintColor);
   padding: 0.5rem;
   margin: 0.5rem;
@@ -113,5 +116,11 @@ button:hover {
 .deal {
   display: flex;
   background-color: var(--lightGreenColor);
+  font-weight: 600;
+}
+
+.deal:hover {
+  color: var(--lightGreenColor);
+  background-color: var(--darkerGreenColor);
 }
 
