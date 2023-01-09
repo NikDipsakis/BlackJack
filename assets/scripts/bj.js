@@ -137,17 +137,30 @@ function checkIfBust(player) {
 console.log(checkIfBust(demoPlayer));
 console.log(getHandValue(demoPlayer));
 //console.log(checkAceCount(demoPlayer))
-//when clicked a card will be added to player
 
 
 
+function createPlayerElement() {
+    let parent = document.querySelector(".players-section")
+    let child = document.createElement("div")
+    child.setAttribute("class","player")
 
-//getHandValue(playerNick)
 
-//console.log(playerNick.hand);
+    child.innerHTML = `<h3>Player 2</h3>
+    <div id="player-cards" class="player-cards">
+      <img src="assets/images/Clubs/A.png" />
+      <div class="buttons">
+        <button id="hit" class="hit">Hit</button>
+        <button id="stay" class="stay">Stay</button>
+        <p id="results" class="results"></p>
+      </div>
+    </div>`
 
-//function dealerCheck {
+    parent.appendChild(child)
+    
+}
+const dealButton = document.getElementById("deal");
 
-//}
 
+dealButton.addEventListener('click' , createPlayerElement())
 

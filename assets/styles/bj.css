@@ -4,7 +4,7 @@
   --mintColor: rgb(161, 236, 184);
   --whiteColor: rgb(255, 255, 255);
   --darkGreenColor: rgb(1, 77, 54);
-  --lightGreenColor: rgb(5, 230, 162);
+  --lightGreenColor: rgb(30, 209, 164);
 }
 
 * {
@@ -109,3 +109,9 @@ button:hover {
   background-color: var(--darkGreenColor);
   color: var(--mintColor);
 }
+
+.deal {
+  display: flex;
+  background-color: var(--lightGreenColor);
+}
+
