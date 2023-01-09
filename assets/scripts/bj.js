@@ -162,5 +162,5 @@ function createPlayerElement(playerInput) {
 const dealButton = document.getElementById("deal");
 
 
-dealButton.addEventListener('click' , createPlayerElement(demoPlayer.name))
+dealButton.addEventListener('click' ,(e) => createPlayerElement(demoPlayer.name))
 
