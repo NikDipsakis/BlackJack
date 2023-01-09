@@ -80,7 +80,7 @@ function areTwoCardsTheSame(card1, card2) {
 
 const allCards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
 const cardSuits = ['♥️', '♣️', '♠️', '♦️'];
-let symbolToText = {
+const symbolToText = {
     '♥️': 'hearts',
     '♣️': 'spades',
     '♠️': 'clubs',
@@ -91,9 +91,8 @@ const deck = new Deck(allCards, cardSuits)
 deck.shuffleDeck()
 const playerNick = new Player('Nick', [deck.deckDraw(deck)])
 const playerKostas = new Player('Kostas', [deck.deckDraw(deck)])
-const demoPlayer = new Player('demo', [{ name: 'A', suit: '♥️' }, { name: '2', suit: '♥️' }, { name: 'K', suit: '♠️' }])
-console.log(demoPlayer.hand)
-
+const demoPlayer = new Player('Demo', [{ name: 'A', suit: '♥️' } ,{ name: 'K', suit: '♥️' } ])
+console.log(demoPlayer)
 
 
 function checkAceCount(player) {
@@ -106,6 +105,7 @@ function checkAceCount(player) {
         if (player.hand[i].name === 'A') {
             aceCount += 1
         }
+        
 
     } return aceCount
 }
@@ -141,8 +141,8 @@ function checkIfBust(player) {
         return false
     } else return true
 }
-console.log(checkIfBust(demoPlayer));
-console.log(getHandValue(demoPlayer));
+//console.log(checkIfBust(demoPlayer));
+//console.log(getHandValue(demoPlayer));
 //console.log(checkAceCount(demoPlayer))
 
 
@@ -151,7 +151,7 @@ function createPlayerElement(playerInput) {
     let child = document.createElement("div")
     child.setAttribute("class", "player")
 
-
+    
     child.innerHTML = `<h3>${playerInput}</h3>
     <div id="player-cards" class="player-cards">
       <img src="assets/images/CardFronts/Aclubs.png" />
@@ -165,9 +165,30 @@ function createPlayerElement(playerInput) {
     parent.appendChild(child)
 
 }
+console.log(demoPlayer.name)
+
+function displayPlayerCard (player){
+    let parent = document.querySelector(".players-section")
+    let child = document.createElement("div")
+    child.setAttribute("class", "player")
+
+    
+    child.innerHTML = `<h3>${player.name}</h3>
+    <div id="player-cards" class="player-cards">
+      <img src="assets/images/CardFronts/${demoPlayer.hand[0].name + symbolToText[demoPlayer.hand[0].suit]}.png" />
+      <div class="buttons">
+      <button id="hit-button" class="hit-button">Hit</button>
+      <button id="stay-button" class="stay-button">Stay</button>
+        <p id="results" class="results"></p>
+      </div>
+    </div>`
+
+    parent.appendChild(child)
+}
+
 const dealButton = document.getElementById("deal");
 
 
-//dealButton.addEventListener('click', createPlayerElement(demoPlayer.name))
-dealButton.addEventListener('click', (e) => createPlayerElement(demoPlayer.name))
+//dealButton.addEventListener('click', createPlayerElement(demoPlayer))
+dealButton.addEventListener('click', (e) => displayPlayerCard(demoPlayer))
 
