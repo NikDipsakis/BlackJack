@@ -140,13 +140,13 @@ console.log(getHandValue(demoPlayer));
 
 
 
-function createPlayerElement() {
+function createPlayerElement(playerInput) {
     let parent = document.querySelector(".players-section")
     let child = document.createElement("div")
     child.setAttribute("class","player")
 
 
-    child.innerHTML = `<h3>Player 2</h3>
+    child.innerHTML = `<h3>${playerInput}</h3>
     <div id="player-cards" class="player-cards">
       <img src="assets/images/Clubs/A.png" />
       <div class="buttons">
@@ -162,5 +162,5 @@ function createPlayerElement() {
 const dealButton = document.getElementById("deal");
 
 
-dealButton.addEventListener('click' , createPlayerElement())
+dealButton.addEventListener('click' , createPlayerElement(demoPlayer.name))
 
