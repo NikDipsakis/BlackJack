@@ -144,6 +144,8 @@ function checkIfBust(player) {
 console.log(checkIfBust(demoPlayer));
 console.log(getHandValue(demoPlayer));
 //console.log(checkAceCount(demoPlayer))
+
+
 function createPlayerElement(playerInput) {
     let parent = document.querySelector(".players-section")
     let child = document.createElement("div")
