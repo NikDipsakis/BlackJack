@@ -91,7 +91,7 @@ const deck = new Deck(allCards, cardSuits)
 deck.shuffleDeck()
 const playerNick = new Player('Nick', [deck.deckDraw(deck)])
 const playerKostas = new Player('Kostas', [deck.deckDraw(deck)])
-const demoPlayer = new Player('Demo', [{ name: 'A', suit: '♥️' } ,{ name: 'K', suit: '♥️' } ])
+const demoPlayer = new Player('Demo', [{ name: 'A', suit: '♥️' },])
 console.log(demoPlayer)
 
 
@@ -105,7 +105,7 @@ function checkAceCount(player) {
         if (player.hand[i].name === 'A') {
             aceCount += 1
         }
-        
+
 
     } return aceCount
 }
@@ -145,50 +145,49 @@ function checkIfBust(player) {
 //console.log(getHandValue(demoPlayer));
 //console.log(checkAceCount(demoPlayer))
 
+const dealBtn = document.getElementById("deal");
+const hitBtn = document.getElementById("hit-button");
+console.log(demoPlayer.hand)
 
-function createPlayerElement(playerInput) {
+function dealPlayerCard(player) {
     let parent = document.querySelector(".players-section")
     let child = document.createElement("div")
     child.setAttribute("class", "player")
 
-    
-    child.innerHTML = `<h3>${playerInput}</h3>
+    for (let i = 0; i < player.hand.length; i++) {
+        child.innerHTML = `<h3>${player.name}</h3>
     <div id="player-cards" class="player-cards">
-      <img src="assets/images/CardFronts/Aclubs.png" />
+      <img src="assets/images/CardFronts/${player.hand[i].name + symbolToText[player.hand[i].suit]}.png" />
       <div class="buttons">
       <button id="hit-button" class="hit-button">Hit</button>
       <button id="stay-button" class="stay-button">Stay</button>
         <p id="results" class="results"></p>
       </div>
     </div>`
-
+        
     parent.appendChild(child)
-
+    }
 }
-console.log(demoPlayer.name)
 
-function displayPlayerCard (player){
-    let parent = document.querySelector(".players-section")
+function hitPlayer(player) {
+    
+    let parent = document.querySelector(".player-cards")
     let child = document.createElement("div")
     child.setAttribute("class", "player")
+    player.hand.push(deck.deckDraw(deck))
 
-    
-    child.innerHTML = `<h3>${player.name}</h3>
-    <div id="player-cards" class="player-cards">
-      <img src="assets/images/CardFronts/${demoPlayer.hand[0].name + symbolToText[demoPlayer.hand[0].suit]}.png" />
-      <div class="buttons">
-      <button id="hit-button" class="hit-button">Hit</button>
-      <button id="stay-button" class="stay-button">Stay</button>
-        <p id="results" class="results"></p>
-      </div>
-    </div>`
-
+    for (let i = 1; i < player.hand.length; i++){
+    child.innerHTML = `<div id="player-cards" class="player-cards">
+          <img src="assets/images/CardFronts/${player.hand[i].name + symbolToText[player.hand[i].suit]}.png" />
+            <p id="results" class="results"></p>
+          </div>`
+}
     parent.appendChild(child)
 }
 
-const dealButton = document.getElementById("deal");
 
 
 //dealButton.addEventListener('click', createPlayerElement(demoPlayer))
-dealButton.addEventListener('click', (e) => displayPlayerCard(demoPlayer))
+dealBtn.addEventListener('click', (e) => dealPlayerCard(demoPlayer))
+hitBtn.addEventListener('click', (e) => hitPlayer(demoPlayer))
 
