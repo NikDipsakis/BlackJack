@@ -19,21 +19,21 @@ body {
   background-size: cover;
 }
 
-.dealer-section {
+#dealer-section {
   display: flex;
   justify-content: center;
   flex-direction: row;
   margin: 2.5rem;
 }
 
-.dealer h2 {
+#dealer h2 {
   font-size: 2rem;
   color: var(--lightGreenColor);
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
 }
-.dealer-cards img {
+#dealer-cards img {
   display: inline;
   height: 175px;
   width: 125px;
@@ -47,7 +47,7 @@ h2 {
   justify-content: center;
 }
 
-.players-section {
+#players-section {
   display: flex;
   justify-content: center;
 }
@@ -64,7 +64,7 @@ h2 {
   justify-content: center;
 }
 
-.player-cards {
+#player-cards {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -72,14 +72,14 @@ h2 {
   margin-left: 1rem;
 }
 
-.player-cards img {
+#player-cards img {
   display: flex;
   justify-content: center;
   height: 175px;
   width: 125px;
   margin: 1px;
 }
-.buttons {
+#buttons {
   display: flex;
   align-items: center;
 }
@@ -113,13 +113,13 @@ button:hover {
   color: var(--mintColor);
 }
 
-.deal {
+#deal {
   display: flex;
   background-color: var(--lightGreenColor);
   font-weight: 600;
 }
 
-.deal:hover {
+#deal:hover {
   color: var(--lightGreenColor);
   background-color: var(--darkerGreenColor);
 }
