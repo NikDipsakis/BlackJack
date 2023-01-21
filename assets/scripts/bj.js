@@ -2,6 +2,7 @@ class Card {
     constructor(name, suit) {
         this.name = name
         this.suit = suit
+        this.isReveald = false
     };
 
     introFullCard() {
@@ -86,13 +87,13 @@ const symbolToText = {
     '♠️': 'clubs',
     '♦️': 'diamonds'
 }
-console.log(symbolToText['♥️'])
+
 const deck = new Deck(allCards, cardSuits)
 deck.shuffleDeck()
-const playerNick = new Player('Nick', [deck.deckDraw(deck)])
-const playerKostas = new Player('Kostas', [deck.deckDraw(deck)])
-const demoPlayer = new Player('Demo', [{ name: 'A', suit: '♥️' },])
-console.log(demoPlayer)
+const playerNick = new Player('Nick', [])
+const playerKostas = new Player('Kostas', [])
+const demoPlayer = new Player('Demo', [])
+
 
 
 function checkAceCount(player) {
@@ -147,50 +148,79 @@ function checkIfBust(player) {
 
 const dealBtn = document.getElementById("deal");
 const playerhitBtn = document.getElementById("hit-button");
-console.log(demoPlayer.hand)
+
 
 function dealPlayerCard(player) {
     let parent = document.querySelector(".players-section")
     let child = document.createElement("div")
     child.setAttribute("class", "player")
 
-    for (let i = 0; i < player.hand.length; i++) {
-        child.innerHTML = `<h3>${player.name}</h3>
-    <div id="player-cards" class="${player.name}-cards">
-      <img src="assets/images/CardFronts/${player.hand[i].name + symbolToText[player.hand[i].suit]}.png" />
-      <div class="buttons" id="buttons">
-      <button id= ${player.name}-hit-button class="hit-button">Hit</button>
-      <button id="stay-button" class="stay-button">Stay</button>
+
+    child.innerHTML = `<h3>${player.name}</h3>
+    <div class="buttons" id="buttons">
+        <button id= ${player.name}-hit-button class="hit-button">Hit</button>
+        <button id="stay-button" class="stay-button">Stay</button>
         <p id="results" class="${player.name}-results"></p>
       </div>
+    <div id="player-cards" class="${player.name}-cards">
+      
     </div>`
 
-        parent.appendChild(child)
-    }
+    parent.appendChild(child)
+
     const hitBtn = document.getElementById(`${player.name}-hit-button`);
-    hitBtn.addEventListener('click', (e) => hitPlayer(demoPlayer))
+    hitBtn.addEventListener('click', (e) => hitPlayer(player))
+    hitPlayer(player)
+
+    i = i + 1
 }
 
 function hitPlayer(player) {
-
-    let parent = document.querySelector(`.${player.name}-cards`)
-    let child = document.createElement("div")
-    child.setAttribute("class", "player")
+    console.log("hit")
     player.hand.push(deck.deckDraw(deck))
+    displayCard(player)
+}
 
-    for (let i = 1; i < player.hand.length; i++) {
-        child.innerHTML = `<div><img src="assets/images/CardFronts/${player.hand[i].name + symbolToText[player.hand[i].suit]}.png" /></div>`
-          
-        
+function displayCard(player) {
+    let parent = document.querySelector(`.${player.name}-cards`)
+
+    parent.innerHTML = ``
+
+    for (let i = 0; i < player.hand.length; i++) {
+        // console.log(player.hand[i])
+        if (player.hand[i].isReveald) {
+            parent.innerHTML += `<div id="${player.hand[i].name + symbolToText[player.hand[i].suit]}"><img src="assets/images/CardFronts/${player.hand[i].name + symbolToText[player.hand[i].suit]}.png" /></div>`
+        }
+        else {
+            parent.innerHTML += `<div id="${player.hand[i].name + symbolToText[player.hand[i].suit]}"><img id="hidden" class="hidden" src="assets/images/CardBacks/unique.jpg" /></div>`
+        }
     }
-    parent.appendChild(child)
-    
+   
+}
+
+function flipCard(player) {
+    let parent = document.querySelector(`.${player.name}-cards`)
+
+    parent.innerHTML = ''
+    for (let card of player.hand) {
+        card.isReveald = true
+    }
+
+    displayCard(player)
 }
 
 
+const players = [playerNick, demoPlayer, playerKostas]
+var i = 0
 
 //dealButton.addEventListener('click', createPlayerElement(demoPlayer))
-dealBtn.addEventListener('click', (e) => dealPlayerCard(demoPlayer))
-playerhitBtn.addEventListener('click', (e) => hitPlayer(demoPlayer))
+dealBtn.addEventListener('click', (e) => dealPlayerCard(players[i]))
+
+
+
+
+const dealFlipButton = document.querySelector(".flip").addEventListener("onload",() =>flipCard(playerNick))
+
+
 
 
