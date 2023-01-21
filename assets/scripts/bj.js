@@ -91,7 +91,7 @@ const deck = new Deck(allCards, cardSuits)
 deck.shuffleDeck()
 const playerNick = new Player('Nick', [deck.deckDraw(deck)])
 const playerKostas = new Player('Kostas', [deck.deckDraw(deck)])
-const demoPlayer = new Player('Demo', [{ name: 'A', suit: '♥️' },])
+const demoPlayer = new Player('Demo', [deck.deckDraw(deck)])
 console.log(demoPlayer)
 
 
@@ -191,6 +191,6 @@ function hitPlayer(player) {
 
 //dealButton.addEventListener('click', createPlayerElement(demoPlayer))
 dealBtn.addEventListener('click', (e) => dealPlayerCard(demoPlayer))
-playerhitBtn.addEventListener('click', (e) => hitPlayer(demoPlayer))
+playerhitBtn.addEventListener('click', (e) => hitPlayer(playerNick))
 
 
