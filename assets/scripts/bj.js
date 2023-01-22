@@ -219,7 +219,7 @@ dealBtn.addEventListener('click', (e) => dealPlayerCard(players[i]))
 
 
 
-const dealFlipButton = document.querySelector(".flip").addEventListener("onload",() =>flipCard(playerNick))
+const dealFlipButton = document.querySelector(".flip").addEventListener("click",() =>flipCard(playerNick))
 
 
 

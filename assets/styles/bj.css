@@ -5,7 +5,8 @@
   --whiteColor: rgb(255, 255, 255);
   --darkGreenColor: rgb(0, 70, 49);
   --lightGreenColor: rgb(30, 209, 164);
-  --darkerGreenColor:rgb(19, 73, 64);
+  --darkerGreenColor: rgb(19, 73, 64);
+  --darkColor: rgb(70, 70, 70);
 }
 
 * {
@@ -50,26 +51,32 @@ h2 {
 #players-section {
   display: flex;
   justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .player {
   display: inline-block;
   justify-content: center;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 .player h3 {
   font-size: 1.5rem;
   color: var(--mintColor);
-  margin: 1rem;
+  margin: 0.5rem;
   display: flex;
   justify-content: center;
 }
 
 #player-cards {
   display: flex;
-  align-items: center;
-  margin: 1rem;
-  margin-left: 1rem;
+  align-items: flex-start;
+  margin: 10px;
+  margin-left: 5rem;
 }
+
 
 #player-cards img {
   display: flex;
@@ -77,10 +84,20 @@ h2 {
   height: 175px;
   width: 125px;
   margin: 1px;
+  margin-left: -95px;
+  border-radius: 5px;
+  box-shadow: -5px 5px 20px -8px rgb(0, 0, 0);
 }
+#player-cards img:hover{
+  height: 182px;
+  width: 132px;
+  transition: 0.25s ; 
+}
+
 #buttons {
   display: flex;
   align-items: center;
+  
 }
 
 button {
@@ -122,4 +139,3 @@ button:hover {
   color: var(--lightGreenColor);
   background-color: var(--darkerGreenColor);
 }
-
