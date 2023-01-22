@@ -2,7 +2,7 @@ class Card {
     constructor(name, suit) {
         this.name = name
         this.suit = suit
-        this.isReveald = false
+        this.isReveald = true
     };
 
     introFullCard() {
@@ -69,6 +69,7 @@ class Player {
     constructor(name, hand) {
         this.name = name
         this.hand = hand
+        this.result = 0
     }
 }
 
@@ -93,6 +94,8 @@ deck.shuffleDeck()
 const playerNick = new Player('Nick', [])
 const playerKostas = new Player('Kostas', [])
 const demoPlayer = new Player('Demo', [])
+const dealBtn = document.getElementById("deal");
+const playerhitBtn = document.getElementById("hit-button");
 
 
 
@@ -134,56 +137,47 @@ function getHandValue(player) {
             cardSum += Number(cardValue)
         }
     }
-    return cardSum
+    
 }
+
 
 function checkIfBust(player) {
     if (getHandValue(player) <= 21) {
         return false
     } else return true
 }
-//console.log(checkIfBust(demoPlayer));
-//console.log(getHandValue(demoPlayer));
-//console.log(checkAceCount(demoPlayer))
-
-const dealBtn = document.getElementById("deal");
-const playerhitBtn = document.getElementById("hit-button");
-
 
 function dealPlayerCard(player) {
+
     let parent = document.querySelector(".players-section")
     let child = document.createElement("div")
     child.setAttribute("class", "player")
 
-
     child.innerHTML = `<h3>${player.name}</h3>
     <div class="buttons" id="buttons">
         <button id= ${player.name}-hit-button class="hit-button">Hit</button>
-        <button id="stay-button" class="stay-button">Stay</button>
-        <p id="results" class="${player.name}-results"></p>
+        <button id="${player.name}-stay-button" class="stay-button">Stay</button>
       </div>
     <div id="player-cards" class="${player.name}-cards">
-      
-    </div>`
-
+    </div>
+    <p id="${player.name}-results" class="results">Results: ${player.result}</p>`
     parent.appendChild(child)
-
     const hitBtn = document.getElementById(`${player.name}-hit-button`);
     hitBtn.addEventListener('click', (e) => hitPlayer(player))
     hitPlayer(player)
-
     i = i + 1
 }
 
 function hitPlayer(player) {
-    console.log("hit")
+    let result = player.result
+    console.log(result)
     player.hand.push(deck.deckDraw(deck))
-    displayCard(player)
+    console.log(player)
+    displayCard(player)   
 }
 
 function displayCard(player) {
     let parent = document.querySelector(`.${player.name}-cards`)
-
     parent.innerHTML = ``
 
     for (let i = 0; i < player.hand.length; i++) {
@@ -195,12 +189,12 @@ function displayCard(player) {
             parent.innerHTML += `<div id="${player.hand[i].name + symbolToText[player.hand[i].suit]}"><img id="hidden" class="hidden" src="assets/images/CardBacks/unique.jpg" /></div>`
         }
     }
-   
+
 }
 
 function flipCard(player) {
     let parent = document.querySelector(`.${player.name}-cards`)
-
+    
     parent.innerHTML = ''
     for (let card of player.hand) {
         card.isReveald = true
@@ -209,17 +203,11 @@ function flipCard(player) {
     displayCard(player)
 }
 
-
 const players = [playerNick, demoPlayer, playerKostas]
 var i = 0
 
-//dealButton.addEventListener('click', createPlayerElement(demoPlayer))
 dealBtn.addEventListener('click', (e) => dealPlayerCard(players[i]))
-
-
-
-
-const dealFlipButton = document.querySelector(".flip").addEventListener("click",() =>flipCard(playerNick))
+const dealFlipButton = document.querySelector(".flip").addEventListener("click", () => flipCard(playerNick))
 
 
 

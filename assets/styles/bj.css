@@ -70,11 +70,17 @@ h2 {
   justify-content: center;
 }
 
+.results {
+  color: var(--mintColor);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
 #player-cards {
   display: flex;
   align-items: flex-start;
   margin: 10px;
-  margin-left: 5rem;
+  margin-left: 4rem;
 }
 
 
