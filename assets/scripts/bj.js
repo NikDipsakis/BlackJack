@@ -71,6 +71,7 @@ class Player {
         this.hand = hand
         this.result = 0
     }
+
 }
 
 function areTwoCardsTheSame(card1, card2) {
@@ -81,16 +82,18 @@ function areTwoCardsTheSame(card1, card2) {
 }
 
 const allCards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
-const cardSuits = ['♥️', '♣️', '♠️', '♦️'];
+const cardSuits = ['♥️', '♠️', '♣️', '♦️'];
 const symbolToText = {
     '♥️': 'hearts',
-    '♣️': 'spades',
-    '♠️': 'clubs',
+    '♠️': 'spades',
+    '♣️': 'clubs',
     '♦️': 'diamonds'
 }
 
 const deck = new Deck(allCards, cardSuits)
 deck.shuffleDeck()
+const dealerPlayer = new Player('Dealer', [])
+console.log(dealerPlayer)
 const playerNick = new Player('Nick', [])
 const playerKostas = new Player('Kostas', [])
 const demoPlayer = new Player('Demo', [])
@@ -137,7 +140,7 @@ function getHandValue(player) {
             cardSum += Number(cardValue)
         }
     }
-    
+    return cardSum
 }
 
 
@@ -146,6 +149,33 @@ function checkIfBust(player) {
         return false
     } else return true
 }
+
+
+function dealDealer(player) {
+    player.hand.isReveald = false
+    let parent = document.querySelector(".dealer")
+    let parent2 = document.querySelector(".dealer-sum")
+    let child = document.createElement("div")
+    child.setAttribute("class", "dealer-cards")
+    player.hand.push(deck.deckDraw(), deck.deckDraw())
+
+    if (player.hand.isReveald === false) {
+        parent2.innerHTML = ``
+        child.innerHTML = `
+    <div id="dealer-cards" class="dealer-cards">
+    <img id="hidden" class="hidden" src="assets/images/CardBacks/unique.jpg" />
+      <img src="assets/images/CardFronts/${player.hand[1].name + symbolToText[player.hand[1].suit]}.png" />
+    </div>`
+    } else {
+        parent2.innerHTML = `${getHandValue(player)}`
+        child.innerHTML = `
+    <div id="dealer-cards" class="dealer-cards"><img src="assets/images/CardFronts/${player.hand[0].name + symbolToText[player.hand[0].suit]}.png" />
+    <img src="assets/images/CardFronts/${player.hand[1].name + symbolToText[player.hand[1].suit]}.png" /></div>`
+    }
+
+    parent.appendChild(child)
+}
+
 
 function dealPlayerCard(player) {
 
@@ -169,11 +199,10 @@ function dealPlayerCard(player) {
 }
 
 function hitPlayer(player) {
-    let result = player.result
-    console.log(result)
     player.hand.push(deck.deckDraw(deck))
     console.log(player)
-    displayCard(player)   
+    displayCard(player)
+    
 }
 
 function displayCard(player) {
@@ -194,7 +223,7 @@ function displayCard(player) {
 
 function flipCard(player) {
     let parent = document.querySelector(`.${player.name}-cards`)
-    
+
     parent.innerHTML = ''
     for (let card of player.hand) {
         card.isReveald = true
@@ -207,8 +236,5 @@ const players = [playerNick, demoPlayer, playerKostas]
 var i = 0
 
 dealBtn.addEventListener('click', (e) => dealPlayerCard(players[i]))
+dealBtn.addEventListener('click', (e) => dealDealer(dealerPlayer))
 const dealFlipButton = document.querySelector(".flip").addEventListener("click", () => flipCard(playerNick))
-
-
-
-

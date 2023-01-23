@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlackJack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles/bj.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BlackJack</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles/bj.css" />
-</head>
-
-<body>
-  <section class="dealer-section" id="dealer-section">
-    <div class="dealer" id="dealer">
-      <h2>Dealer<span id="dealer-sum"></span></h2>
-      <button id="deal" class="deal">Deal</button>
-      <button id="deal" class="flip">Flip</button>
-      <div id="dealer-cards" class="dealer-cards">
-        <!--<img id="hidden" class="hidden" src="assets/images/CardBacks/unique.jpg" />
-        <img id="hidden" class="hidden" src="assets/images/CardBacks/unique.jpg" />-->
+  <body>
+    <section class="dealer-section" id="dealer-section">
+      <div class="dealer" id="dealer">
+        <h2>Dealer :<span class="dealer-sum"></span></h2>
+        <button id="deal" class="deal">Start Round</button>
+        <button id="flip" class="flip">Flip</button>
+       <!-- <div id="dealer-cards" class="dealer-cards">
+          <img id="hidden" class="hidden" src="assets/images/CardBacks/unique.jpg" />
+        <img id="hidden" class="hidden" src="assets/images/CardBacks/unique.jpg" />
+        </div>-->
       </div>
-    </div>
-  </section>
-  <h2>Players</h2>
-  <section class="players-section" id="players-section">
-    
-    <!--<div class="player">
+    </section>
+    <h2>Players</h2>
+    <section class="players-section" id="players-section">
+      <!--<div class="player">
         <h3>Player 2</h3>
         <div id="player-cards" class="player-cards">
           <img src="assets/images/Clubs/A.png" />
@@ -38,8 +39,7 @@
           </div>
         </div>
       </div>-->
-  </section>
-  <script src="assets/scripts/bj.js"></script>
-</body>
-
+    </section>
+    <script src="assets/scripts/bj.js"></script>
+  </body>
 </html>

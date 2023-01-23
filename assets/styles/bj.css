@@ -7,6 +7,7 @@
   --lightGreenColor: rgb(30, 209, 164);
   --darkerGreenColor: rgb(19, 73, 64);
   --darkColor: rgb(70, 70, 70);
+  --lighterGreenColor: rgb(66, 255, 145);
 }
 
 * {
@@ -34,12 +35,30 @@ body {
   justify-content: center;
   margin-bottom: 2rem;
 }
+#dealer-cards {
+  display: flex;
+  flex-direction: row;
+}
+
 #dealer-cards img {
-  display: inline;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   height: 175px;
   width: 125px;
-  margin: 1px;
-  border-radius: 6px;
+  margin: 1rem;
+  margin-left: -95px;
+  border-radius: 5px;
+  box-shadow: -5px 5px 20px -8px rgb(0, 0, 0);
+}
+#dealer-cards img:hover{
+  height: 182px;
+  width: 132px;
+  transition: 0.25s ; 
+}
+.dealer-sum {
+  color: var(--lighterGreenColor);
+  margin-left: 0.5rem;
 }
 h2 {
   font-size: 2rem;
@@ -139,9 +158,21 @@ button:hover {
   display: flex;
   background-color: var(--lightGreenColor);
   font-weight: 600;
+  width: 200px;
+}
+#flip{
+  display: flex;
+  margin: auto;
+  background-color: var(--lightGreenColor);
+  font-weight: 600;
 }
 
 #deal:hover {
+  color: var(--lightGreenColor);
+  background-color: var(--darkerGreenColor);
+}
+
+#flip:hover {
   color: var(--lightGreenColor);
   background-color: var(--darkerGreenColor);
 }
