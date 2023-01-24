@@ -71,8 +71,8 @@ class Player {
         this.hand = hand
         this.result = 0
     }
-
 }
+
 
 function areTwoCardsTheSame(card1, card2) {
     if (card1.name == card2.name && card1.suit == card2.suit) {
@@ -91,15 +91,13 @@ const symbolToText = {
 }
 
 const deck = new Deck(allCards, cardSuits)
-deck.shuffleDeck()
 const dealerPlayer = new Player('Dealer', [])
-console.log(dealerPlayer)
 const playerNick = new Player('Nick', [])
 const playerKostas = new Player('Kostas', [])
 const demoPlayer = new Player('Demo', [])
 const dealBtn = document.getElementById("deal");
 const playerhitBtn = document.getElementById("hit-button");
-
+deck.shuffleDeck()
 
 
 function checkAceCount(player) {
@@ -123,8 +121,6 @@ function getHandValue(player) {
         cardSum += 21
         return cardSum
     } else if (checkAceCount(player) === 2) {
-        cardSum += 12
-    } else if (checkAceCount(player) === 3) {
         cardSum += 12
     } else if (checkAceCount(player) === 1) {
         cardSum += 11
@@ -178,7 +174,6 @@ function dealDealer(player) {
 
 
 function dealPlayerCard(player) {
-
     let parent = document.querySelector(".players-section")
     let child = document.createElement("div")
     child.setAttribute("class", "player")
@@ -202,7 +197,7 @@ function hitPlayer(player) {
     player.hand.push(deck.deckDraw(deck))
     console.log(player)
     displayCard(player)
-    
+
 }
 
 function displayCard(player) {
@@ -223,7 +218,7 @@ function displayCard(player) {
 
 function flipCard(player) {
     let parent = document.querySelector(`.${player.name}-cards`)
-
+    player.hand.isReveald === true
     parent.innerHTML = ''
     for (let card of player.hand) {
         card.isReveald = true
